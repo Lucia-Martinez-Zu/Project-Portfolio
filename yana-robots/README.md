@@ -3,7 +3,6 @@
 > **Dashboard web de telemetría en tiempo real para flotas de robots móviles ROS 2.**
 > Backend Flask + Socket.IO con bridge a ROS 2 (rclpy). Frontend liviano con Chart.js, mapa 2D en canvas y log de eventos. Incluye un simulador para probar el sistema sin necesidad de tener ROS 2 instalado.
 
-[![CI](https://github.com/<tu-usuario>/yana-robots/actions/workflows/ci.yml/badge.svg)](https://github.com/<tu-usuario>/yana-robots/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![Flask](https://img.shields.io/badge/Flask-3.x-000000?logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![ROS 2](https://img.shields.io/badge/ROS%202-Humble-22314E?logo=ros&logoColor=white)](https://docs.ros.org/en/humble/)
