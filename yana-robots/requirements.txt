@@ -1,9 +1,0 @@
-flask>=3.0,<4.0
-flask-socketio>=5.3,<6.0
-python-socketio>=5.11,<6.0
-python-engineio>=4.9,<5.0
-
-# ROS 2 (rclpy + message packages) is NOT installable from PyPI.
-# It must come from a ROS 2 Humble (or newer) installation. The bridge in
-# app/ros_bridge.py imports rclpy lazily, so the dashboard runs fine
-# without ROS 2 in simulator mode.
