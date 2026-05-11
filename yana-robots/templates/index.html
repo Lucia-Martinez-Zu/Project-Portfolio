@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yana Robots — Fleet Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='img/favicon.svg') }}">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">Y</div>
+      <div>
+        <h1>Yana Robots</h1>
+        <span class="tagline">Fleet telemetry for service robots</span>
+      </div>
+    </div>
+
+    <div class="topbar-meta">
+      <div class="meta-item">
+        <span class="meta-label">Source</span>
+        <span class="meta-value">{{ source }}</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Rate</span>
+        <span class="meta-value">{{ update_hz }} Hz</span>
+      </div>
+      <div class="meta-item">
+        <span id="connection-dot" class="dot dot-off"></span>
+        <span id="connection-label" class="meta-value">Disconnected</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- Sidebar: robot list -->
+    <aside class="sidebar">
+      <h2>Fleet</h2>
+      <div id="robot-list" class="robot-list">
+        <div class="empty">Waiting for telemetry…</div>
+      </div>
+    </aside>
+
+    <!-- Main panel -->
+    <section class="panel">
+
+      <!-- Top KPIs -->
+      <div class="kpi-row">
+        <div class="kpi">
+          <span class="kpi-label">Selected robot</span>
+          <span id="kpi-robot" class="kpi-value">—</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Battery</span>
+          <span id="kpi-battery" class="kpi-value">—</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Speed (linear)</span>
+          <span id="kpi-speed" class="kpi-value">—</span>
+        </div>
+        <div class="kpi">
+          <span class="kpi-label">Status</span>
+          <span id="kpi-status" class="kpi-value">—</span>
+        </div>
+      </div>
+
+      <!-- Charts + map -->
+      <div class="grid">
+
+        <div class="card map-card">
+          <header class="card-header">
+            <h3>Live map</h3>
+            <span class="hint">XY position · 20×20 m world</span>
+          </header>
+          <canvas id="map-canvas"></canvas>
+          <div class="map-legend" id="map-legend"></div>
+        </div>
+
+        <div class="card">
+          <header class="card-header">
+            <h3>Battery level (%)</h3>
+            <span class="hint">last 60 samples</span>
+          </header>
+          <canvas id="battery-chart"></canvas>
+        </div>
+
+        <div class="card">
+          <header class="card-header">
+            <h3>Velocity</h3>
+            <span class="hint">linear (m/s) · angular (rad/s)</span>
+          </header>
+          <canvas id="velocity-chart"></canvas>
+        </div>
+
+        <div class="card events-card">
+          <header class="card-header">
+            <h3>Event log</h3>
+            <button id="clear-events" class="btn-ghost">Clear</button>
+          </header>
+          <div id="event-log" class="event-log"></div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Yana Robots · open-source portfolio project</span>
+    <span>Made in Bolivia 🇧🇴</span>
+  </footer>
+
+  <!-- Vendored libs (no CDN dependencies) -->
+  <script src="{{ url_for('static', filename='js/vendor/socket.io.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/vendor/chart.umd.min.js') }}"></script>
+
+  <!-- App -->
+  <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/map.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
